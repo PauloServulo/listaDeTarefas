@@ -1,0 +1,99 @@
+<!--Página que apresenta a lista de tarefas com opções de editar e excluir uma tarefa
+Também existe um botão que redireciona para a página de inserção de uma nova tarefa-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+
+    <!--CSS bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--Scripts bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+    <div class="container">
+        <!--Título da página-->
+        <blockquote class="blockquote text-center">
+            <h1>Lista de Tarefas</h1>
+        </blockquote>
+
+        <!--Tabela contendo as tarefas-->
+        {% if not tarefas %}
+        <blockquote class="blockquote text-center">
+            <br />
+            <h3>A lista de tarefas está vazia</h3>
+        </blockquote>
+        {% else %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Data</td>
+                    <th>Nome</td>
+                    <th>Hora</td>
+                    <th>Descrição</td>
+                    <th>
+                        </td>
+                    <th>
+                        </td>
+                </tr>
+            </thead>
+            {% for tarefa in tarefas %}
+            <tr>
+                <td>{{ tarefa.data }}</td>
+                <td>{{ tarefa.nome }}</td>
+                <td>{{ tarefa.hora }}</td>
+                <td>{{ tarefa.descricao }}</td>
+                <td><a href="{% url 'url_edita' tarefa.id %}" class="badge badge-warning">Editar</a></td>
+                <td><a href="" class="badge badge-danger" data-toggle="modal" data-target="#modalExcluir">Excluir</a>
+                </td>
+
+                <!-- Modal para alerta de exclusão-->
+                <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog"
+                    aria-labelledby="excluirModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="excluirModalLabel">Excluir Tarefa</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja excluir a trefa?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <a href="{% url 'url_deleta' tarefa.id %}" class="btn btn-primary">Excluir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tr>
+
+            {% endfor %}
+        </table>
+        {% endif %}
+        <!--Botão para página de inserção de uma nova tarefa-->
+        <blockquote class="blockquote text-center">
+            <a class="btn btn-primary" href="{% url 'url_insere' %}" role="button">Inserir Tarefa</a>
+        </blockquote>
+    </div>
+</body>
+
+</html>
