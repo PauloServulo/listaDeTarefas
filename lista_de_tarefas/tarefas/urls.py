@@ -1,12 +1,11 @@
 from django.urls import path
 
-#from lista_de_tarefas.tarefas.templates import views
-from lista_de_tarefas.tarefas.views import index, insere_tarefa, edita_tarefa, deleta_tarefa
+from lista_de_tarefas.tarefas.views import TasksListView, TasksEditView, TasksCreateView, TasksDeleteView
 app_name = "tarefas"
 
 urlpatterns = [
-    path('', index, name='url_index'),
-    path('insere/', insere_tarefa, name='url_insere'),
-    path('edita/<int:pk>/', edita_tarefa, name='url_edita'),
-    path('deleta/<int:pk>/', deleta_tarefa, name='url_deleta'),
+    path('', TasksListView.as_view(), name='url_index'),
+    path('edit/<int:pk>', TasksEditView.as_view(), name='url_edita'),
+    path('insert', TasksCreateView.as_view(), name='url_insere'),
+    path('delete/<int:pk>', TasksDeleteView.as_view(), name='url_deleta'),
 ]

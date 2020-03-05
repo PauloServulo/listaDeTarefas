@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from lista_de_tarefas.tarefas.views import index, insere_tarefa, edita_tarefa, deleta_tarefa
 
 urlpatterns = [
     path('', include("lista_de_tarefas.tarefas.urls")),
