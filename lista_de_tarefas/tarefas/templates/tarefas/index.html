@@ -60,30 +60,8 @@ Também existe um botão que redireciona para a página de inserção de uma nov
                 <td>{{ tarefa.hora }}</td>
                 <td>{{ tarefa.descricao }}</td>
                 <td><a href="{% url 'tarefas:url_edita' tarefa.id %}" class="badge badge-warning">Editar</a></td>
-                <td><a href="" class="badge badge-danger" data-toggle="modal" data-target="#modalExcluir">Excluir</a>
+                <td><a href="{% url 'tarefas:url_deleta' tarefa.id %}" class="badge badge-danger">Excluir</a>
                 </td>
-
-                <!-- Modal para alerta de exclusão-->
-                <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog"
-                    aria-labelledby="excluirModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="excluirModalLabel">Excluir Tarefa</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Deseja excluir a trefa?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <a href="{% url 'tarefas:url_deleta' tarefa.id %}" class="btn btn-primary">Excluir</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </tr>
 
             {% endfor %}

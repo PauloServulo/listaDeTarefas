@@ -25,12 +25,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <span class="border border-primary">
+    <div class="container">
 
-    <!--Título da página-->
-    <div class="container .mr-md-3">
-        <h1>Tarefa Excluída com sucesso</h1>
-         <a class="btn btn-secondary" href="{% url 'tarefas:url_index' %}" role="button">Voltar</a>
+            <form method="post">{% csrf_token %}
+                <p>Deseja Excluir a tarefa "{{ tarefa.nome }}"?</p>
+                <input type="submit" value="Confirmar" class="btn btn-danger">
+                <a href="{% url 'tarefas:url_index' %}" class="btn btn-primary">Voltar</a>
+            </form>
+
     </div>
+    </span>
+
 
 </body>
 
