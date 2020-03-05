@@ -59,7 +59,7 @@ Também existe um botão que redireciona para a página de inserção de uma nov
                 <td>{{ tarefa.nome }}</td>
                 <td>{{ tarefa.hora }}</td>
                 <td>{{ tarefa.descricao }}</td>
-                <td><a href="{% url 'url_edita' tarefa.id %}" class="badge badge-warning">Editar</a></td>
+                <td><a href="{% url 'tarefas:url_edita' tarefa.id %}" class="badge badge-warning">Editar</a></td>
                 <td><a href="" class="badge badge-danger" data-toggle="modal" data-target="#modalExcluir">Excluir</a>
                 </td>
 
@@ -79,7 +79,7 @@ Também existe um botão que redireciona para a página de inserção de uma nov
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <a href="{% url 'url_deleta' tarefa.id %}" class="btn btn-primary">Excluir</a>
+                                <a href="{% url 'tarefas:url_deleta' tarefa.id %}" class="btn btn-primary">Excluir</a>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ Também existe um botão que redireciona para a página de inserção de uma nov
         {% endif %}
         <!--Botão para página de inserção de uma nova tarefa-->
         <blockquote class="blockquote text-center">
-            <a class="btn btn-primary" href="{% url 'url_insere' %}" role="button">Inserir Tarefa</a>
+            <a class="btn btn-primary" href="{% url 'tarefas:url_insere' %}" role="button">Inserir Tarefa</a>
         </blockquote>
     </div>
 </body>

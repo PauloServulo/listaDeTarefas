@@ -17,7 +17,7 @@ def insere_tarefa(request):
     dados['tipo'] = 1
     if form.is_valid():
         form.save()
-        return redirect('url_index')
+        return redirect('tarefas:url_index')
     return render(request, 'tarefas/insere.html', dados)
 
 #Atualiza uma tarefa de acordo com o id informado
@@ -29,11 +29,11 @@ def edita_tarefa(request, pk):
     dados['tipo'] = 2
     if form.is_valid():
         form.save()
-        return redirect('url_index')
+        return redirect('tarefas:url_index')
     return render(request, 'tarefas/insere.html', dados)
 
 #Deleta uma tarefa de acordo com o id informado
 def deleta_tarefa(request,pk):
     tarefa = Tarefa.objects.get(pk=pk)
     tarefa.delete()
-    return redirect('url_index')
+    return redirect('tarefas:url_index')
